@@ -30,15 +30,27 @@ Promotion into the central docs is never automatic. See [instructions/promotion-
 ## Structure this kit expects in a consumer project
 
 ```
+AGENTS.md                # (or a section within it) points to project-knowledge/kit-reference.md
 project-knowledge/
-  current.md            # consolidated current state: goal, status, facts, promotion candidates
-  events/                # append-only, timestamped: what happened and why
+  kit-reference.md        # which kit repository and version this project follows
+  current.md              # consolidated current state: goal, status, facts, promotion candidates
+  events/                 # append-only, timestamped: what happened and why
   agents/
-    current.md           # who owns which task right now
-    handoffs/             # append-only handoff notes between sessions/agents
+    current.md            # who owns which task right now
+    handoffs/              # append-only handoff notes between sessions/agents
 ```
 
 `project-knowledge/` is local to the project and is never overwritten by an update to this kit.
+
+## Alignment with AGENTS.md
+
+[AGENTS.md](https://agents.md/) is the open, widely-adopted convention many coding-agent tools (Codex, Cursor, GitHub Copilot, and others) already read automatically at the start of a session, without needing to be told to. This kit does not compete with it or replace it — it plugs into it.
+
+A project installing this kit adds a short, stable section to its own `AGENTS.md` (creating one if it doesn't exist yet, or appending to an existing one that already covers build/test/coding conventions) pointing at `project-knowledge/kit-reference.md`. See `templates/AGENTS.snippet.md` for the exact text.
+
+This means: on any tool that already auto-reads `AGENTS.md`, this kit's bootstrap happens automatically, with no explicit "apply" command needed. The explicit commands in [instructions/commands.md](instructions/commands.md) remain as the fallback for tools that don't read `AGENTS.md` on their own, and as a way to force a re-read mid-session.
+
+The snippet itself never changes as the kit's protocol evolves — it only points elsewhere — so adding it to a project's `AGENTS.md` is a one-time step, not something the update protocol needs to touch.
 
 ## This kit is static; projects only read it
 
@@ -68,9 +80,11 @@ Last updated: <date>            # last time the pinned version actually changed
 
 Then create `project-knowledge/current.md` and `project-knowledge/agents/current.md` from this kit's `templates/project-knowledge/` — either by fetching those two template files at the pinned version, or by hand, matching the structure `instructions/logging-protocol.md` and `instructions/agent-coordination.md` define.
 
-Commit `project-knowledge/` (including `kit-reference.md`) into the project's own repository, the same as any other project file.
+Add the contents of `templates/AGENTS.snippet.md` to the project's `AGENTS.md` (create the file if the project has none; append as its own section if one already exists for other purposes — never overwrite existing content).
 
-Agent entrypoint at the start of any session: [instructions/bootstrap.md](instructions/bootstrap.md) — an agent reads `project-knowledge/kit-reference.md` first to know which version of this kit to fetch and follow.
+Commit `project-knowledge/` and `AGENTS.md` into the project's own repository, the same as any other project file.
+
+Agent entrypoint at the start of any session: whichever tool the project uses either reads `AGENTS.md` automatically (most current tools do) and follows the pointer to `project-knowledge/kit-reference.md`, or is told explicitly to (see [instructions/commands.md](instructions/commands.md)). Either path leads to [instructions/bootstrap.md](instructions/bootstrap.md) at the pinned version.
 
 ## Documents
 
@@ -80,6 +94,7 @@ Agent entrypoint at the start of any session: [instructions/bootstrap.md](instru
 - [instructions/promotion-protocol.md](instructions/promotion-protocol.md) — how project findings reach the central documentation
 - [instructions/update-protocol.md](instructions/update-protocol.md) — how a project checks for and applies a newer kit version
 - [instructions/commands.md](instructions/commands.md) — canonical install / apply / update commands for giving to an agent directly, as plain text
+- [templates/AGENTS.snippet.md](templates/AGENTS.snippet.md) — the section to add to a project's `AGENTS.md` so AGENTS.md-aware tools bootstrap this kit automatically
 
 ## Version and updates
 

@@ -2,6 +2,12 @@
 
 Every entry names what changed and why. This is what an update check shows a project owner before they approve pulling in a new pinned version — an update is a reviewed decision, never a blind version bump.
 
+## 2026.09.28.2 — align with AGENTS.md
+
+- Added `templates/AGENTS.snippet.md`: a short, stable section a project adds to its own `AGENTS.md` (the open, widely-adopted convention that Codex, Cursor, GitHub Copilot, and other current tools already read automatically at session start). This makes this kit's bootstrap automatic on any tool that reads `AGENTS.md` on its own, with the explicit commands remaining as the fallback for tools that don't.
+- Updated README, `instructions/bootstrap.md`, `instructions/commands.md`, and USAGE.md to describe both the automatic (`AGENTS.md`) and explicit (direct command) paths into bootstrap.
+- Reasoning: AGENTS.md is a real, broadly-adopted standard (60,000+ repositories, supported by most major agent tools as of this writing) for exactly the problem this kit's own bootstrap discovery was solving from scratch. Rather than compete with it, this kit now plugs into it. The kit's protocol content is still never vendored into a project — only the pointer lives there, same as before.
+
 ## 2026.09.28.1 — initial release
 
 - Distilled from `mhdadizadeh/engineering-os`: kept the append-only events + consolidated `current.md` knowledge model, and the multi-agent task-ownership + handoff protocol.

@@ -6,6 +6,15 @@ Last updated: 2026-09-28
 
 This is the entrypoint an AI coding assistant reads before starting work in a project that follows this kit.
 
+## How an agent gets here
+
+Two paths lead to this file, and both are valid:
+
+- **Automatic:** the project's `AGENTS.md` (which most current agent tools read at the start of a session without being asked) contains a section pointing at `project-knowledge/kit-reference.md` (see `templates/AGENTS.snippet.md`). A tool that reads `AGENTS.md` on its own reaches this bootstrap without any human needing to say anything.
+- **Explicit:** the user directly asks the agent to continue the project following this kit (see `instructions/commands.md`, Command 2) — needed on a tool that does not auto-read `AGENTS.md`, or to force a re-read mid-session.
+
+Either way, once here, follow the same sequence below.
+
 ## Required startup sequence
 
 1. Read `project-knowledge/kit-reference.md` in the project — it names this kit's repository and the pinned version the project follows. If it does not exist, this project has not been set up yet; go to "First run" below.
@@ -22,7 +31,7 @@ If the project has no `project-knowledge/kit-reference.md`, this kit has not bee
 
 ## Where this lives
 
-This kit itself is never copied into the project. Only `project-knowledge/` (the project's own data) and `kit-reference.md` (a one-line pointer to this kit's repository and pinned version) are committed into the project's own git repository. Everything under `instructions/` and `templates/` stays here, in this kit's repository, read but never duplicated.
+This kit itself is never copied into the project. Only `project-knowledge/` (the project's own data), `kit-reference.md` (a pointer to this kit's repository and pinned version), and the small `AGENTS.md` section from `templates/AGENTS.snippet.md` are committed into the project's own git repository. Everything under `instructions/` and `templates/` stays here, in this kit's repository, read but never duplicated.
 
 ## Operating rule
 
