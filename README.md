@@ -1,5 +1,7 @@
 # Project Docs Kit
 
+For a practical, human-facing walkthrough (add it to a project, use it day to day, check for and apply updates), see [USAGE.md](USAGE.md) — written in Persian for this team. This README is the technical reference; `instructions/*.md` are what an AI agent reads and follows.
+
 A small, replaceable documentation-and-coordination layer for individual projects that are built with AI coding assistants (Claude Code, Codex, etc.) and that feed into a shared, central body of documentation.
 
 This is not a software project template. It defines only:
