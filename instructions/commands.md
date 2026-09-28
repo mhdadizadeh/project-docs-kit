@@ -29,7 +29,3 @@ This is the normal per-session startup, not a special action — see instruction
 ## Command 3 — Check / apply update
 
 See instructions/update-protocol.md. Never skip straight to applying — always show what changed (from CHANGELOG.md) and wait for explicit confirmation, even when the user's phrasing sounded like "just update it."
-
-## Wiring these into a specific agent tool
-
-Where the agent tool supports reusable custom commands (for example, Claude Code's command files), a thin command file that just states the intent and points at this file is enough — it should not duplicate the protocol steps, only trigger them. See `templates/agent-commands/` for ready-made examples for Claude Code. Verify the exact command-file format against that tool's current documentation before relying on it; tool-specific conventions change independently of this kit.

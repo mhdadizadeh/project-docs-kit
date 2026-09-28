@@ -79,7 +79,7 @@ Agent entrypoint at the start of any session: [instructions/bootstrap.md](instru
 - [instructions/agent-coordination.md](instructions/agent-coordination.md) — task ownership and handoffs across sessions/agents
 - [instructions/promotion-protocol.md](instructions/promotion-protocol.md) — how project findings reach the central documentation
 - [instructions/update-protocol.md](instructions/update-protocol.md) — how a project checks for and applies a newer kit version
-- [instructions/commands.md](instructions/commands.md) — canonical install / apply / update commands for giving to an agent directly, plus ready-made Claude Code command files under `templates/agent-commands/`
+- [instructions/commands.md](instructions/commands.md) — canonical install / apply / update commands for giving to an agent directly, as plain text
 
 ## Version and updates
 
