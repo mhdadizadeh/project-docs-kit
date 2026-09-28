@@ -21,7 +21,7 @@
 در ریشه پروژه (همان‌جا که `.git` هست):
 
 ```bash
-mkdir -p project-knowledge/events project-knowledge/agents/handoffs
+mkdir -p project-knowledge/events
 ```
 
 فایل `project-knowledge/kit-reference.md` را بسازید:
@@ -30,15 +30,14 @@ mkdir -p project-knowledge/events project-knowledge/agents/handoffs
 # Project Docs Kit reference
 
 Kit repository: https://github.com/mhdadizadeh/project-docs-kit
-Pinned version: 2026.09.28.3
+Pinned version: 2026.09.28.4
 Last checked: 2026-09-28
 Last updated: 2026-09-28
 ```
 
-دو فایل قالب را از این مخزن (در نسخه پین‌شده بالا) بگیرید و در پروژه بگذارید:
+فایل قالب را از این مخزن (در نسخه پین‌شده بالا) بگیرید و در پروژه بگذارید:
 
 - `templates/project-knowledge/current.md` → `project-knowledge/current.md`
-- `templates/project-knowledge/agents/current.md` → `project-knowledge/agents/current.md`
 
 سپس `project-knowledge/current.md` را با اطلاعات واقعی پروژه پر کنید: هدف، وضعیت فعلی. بقیه بخش‌ها (حقایق، ابزارها، سؤال‌های باز، promotion candidates) خالی شروع می‌شوند و در طول کار پر می‌شوند.
 
@@ -48,7 +47,7 @@ Last updated: 2026-09-28
 
 ```bash
 git add project-knowledge AGENTS.md
-git commit -m "Install project-docs-kit v2026.09.28.3"
+git commit -m "Install project-docs-kit v2026.09.28.4"
 ```
 
 از این به بعد، `project-knowledge/` و `AGENTS.md` بخشی از تاریخچه گیت همان پروژه‌اند.
@@ -64,7 +63,7 @@ git commit -m "Install project-docs-kit v2026.09.28.3"
 
 1. `project-knowledge/kit-reference.md` را بخواند.
 2. دستورالعمل‌های این کیت را در همان نسخه پین‌شده بگیرد و بخواند (`instructions/bootstrap.md` نقطه شروع است).
-3. `project-knowledge/current.md` و `project-knowledge/agents/current.md` را بخواند تا بداند پروژه کجاست و چه تسکی مالک دارد.
+3. `project-knowledge/current.md` را بخواند تا بداند پروژه کجاست.
 4. کار را شروع کند — بدون توقف برای تأییدِ هر درخواست، مگر اینکه واقعاً مبهم یا برگشت‌ناپذیر باشد.
 
 ## ۳. ثبت دانش در طول کار پروژه
@@ -76,17 +75,13 @@ git commit -m "Install project-docs-kit v2026.09.28.3"
 
 قاعده فایل `current.md`: هر ادعا در جدول «Facts and assumptions» باید شاهد و وضعیت (`hypothesis` / `confirmed` / `rejected`) داشته باشد. جزئیات کامل در `instructions/logging-protocol.md`.
 
-## ۴. کار چند نفر/چند عامل روی یک پروژه
-
-قبل از شروع هر تسک، عامل باید آن را در `project-knowledge/agents/current.md` برای خودش claim کند. اگر تسک قبلاً مالک دارد، عامل دیگر نباید بدون تأیید صریح شما ادامه دهد. در پایان کار (یا وقتی گیر کرد یا متوقف شد)، یک فایل handoff در `project-knowledge/agents/handoffs/` می‌نویسد. جزئیات در `instructions/agent-coordination.md`.
-
-## ۵. ارتقای یافته‌ها به مستندات مرکزی (Domain Expert docs)
+## ۴. ارتقای یافته‌ها به مستندات مرکزی (Domain Expert docs)
 
 هر چیزی که فکر می‌کنید فراتر از این یک پروژه ارزش دارد (یک ابزار، یک الگوی تکرارشونده، یک درسِ گرفته‌شده) را در جدول «Promotion candidates» در `current.md` همان پروژه ثبت کنید — با شاهد، نه فقط حدس.
 
 دوره‌ای (یا سر هر milestone)، یک بازبینی روی همه پروژه‌ها این جدول‌ها را می‌خواند و یک پیشنهاد ادغام می‌سازد. چیزی خودکار وارد مستندات مرکزی نمی‌شود؛ شما (یا هر کس مالک مستندات مرکزی باشد) تأیید یا رد می‌کنید. جزئیات در `instructions/promotion-protocol.md`.
 
-## ۶. بررسی و اعمال آپدیت کیت
+## ۵. بررسی و اعمال آپدیت کیت
 
 از داخل هر پروژه، کافی است به عامل بگویید (مثلاً): «ببین کیت مستندسازی آپدیت جدید دارد یا نه» یا «کیت را آپدیت کن». عامل:
 
@@ -94,11 +89,11 @@ git commit -m "Install project-docs-kit v2026.09.28.3"
 2. `OS_VERSION` و `CHANGELOG.md` را از این مخزن می‌گیرد.
 3. اگر فرقی نکرده: فقط `Last checked` را به‌روز می‌کند و می‌گوید چیزی تازه نیست.
 4. اگر نسخه جدیدی هست: بندهای تغییریافته از `CHANGELOG.md` را نشانتان می‌دهد و **منتظر تأیید صریح شما** می‌ماند — خودش هرگز آپدیت را اعمال نمی‌کند.
-5. با تأیید شما: فقط `Pinned version` و `Last updated` در `kit-reference.md` عوض و commit می‌شود. `current.md`، `events/` و `agents/` دست‌نخورده می‌مانند.
+5. با تأیید شما: فقط `Pinned version` و `Last updated` در `kit-reference.md` عوض و commit می‌شود. `current.md` و `events/` دست‌نخورده می‌مانند.
 
 اگر آپدیت را رد کردید، عامل می‌تواند یک رویداد کوتاه ثبت کند که «این نسخه بررسی و رد شد، چون…» تا بعداً دوباره پیشنهاد نشود بدون اینکه کسی یادش باشد قبلاً رد شده.
 
-## ۷. سؤالات رایج
+## ۶. سؤالات رایج
 
 **اگر پروژه‌ای هنوز `kit-reference.md` ندارد چی؟**
 یعنی کیت روی آن پروژه نصب نشده. مرحله ۱ را انجام دهید.

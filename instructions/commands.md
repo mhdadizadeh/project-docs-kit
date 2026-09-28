@@ -19,7 +19,7 @@ Requires the kit's repository URL (there is nothing in the project yet to read i
 On this command, an agent must:
 
 1. Confirm `project-knowledge/kit-reference.md` does not already exist. If it does, this is not a fresh install — stop and ask whether the user means Command 3 (update) instead, or genuinely wants to replace the existing setup.
-2. Follow README.md's Install section exactly: create `project-knowledge/{events,agents/handoffs}`, write `kit-reference.md` with the given (or default) repository URL and version, copy the two templates, fill `current.md`'s Goal and Current status from whatever the agent can learn about the project (ask if it cannot), add `templates/AGENTS.snippet.md`'s content to the project's `AGENTS.md` (creating it if absent, appending as its own section if the file already exists for other purposes), and commit.
+2. Follow README.md's Install section exactly: create `project-knowledge/events`, write `kit-reference.md` with the given (or default) repository URL and version, copy the template, fill `current.md`'s Goal and Current status from whatever the agent can learn about the project (ask if it cannot), add `templates/AGENTS.snippet.md`'s content to the project's `AGENTS.md` (creating it if absent, appending as its own section if the file already exists for other purposes), and commit.
 3. Report back the pinned version and that the project now follows the kit, and whether `AGENTS.md` was created or appended to.
 
 ## Command 2 — Bootstrap / apply

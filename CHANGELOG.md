@@ -2,6 +2,12 @@
 
 Every entry names what changed and why. This is what an update check shows a project owner before they approve pulling in a new pinned version — an update is a reviewed decision, never a blind version bump.
 
+## 2026.09.28.4 — drop multi-agent task coordination
+
+- Removed `instructions/agent-coordination.md`, `project-knowledge/agents/` (current.md + handoffs/) from the expected structure and templates, and every reference to task claiming / handoff notes across README.md, USAGE.md, instructions/bootstrap.md, instructions/update-protocol.md, instructions/commands.md, and templates/AGENTS.snippet.md.
+- Reasoning: that mechanism solves conflicts between multiple agents or people working the *same project at the same time*. This team works one session per project at a time, with a daily in-person meeting that already resolves ownership questions; `current.md`'s Change history plus `events/` already give session-to-session continuity. Keeping an unused coordination file was overhead with no one to benefit from it — added back later, with a version bump, if concurrent work on one project actually happens.
+- `project-knowledge/current.md` and `events/` are unaffected; this only removes the `agents/` layer.
+
 ## 2026.09.28.3 — trim README, fill placeholder URLs
 
 - Removed the "What this kit deliberately does not do" and "Provenance" sections from README.md. Their content (dropping the two-stage confirm protocol and mandatory-English rule, and the origin in `mhdadizadeh/engineering-os`) is historical context, not something an agent or a project owner needs on every read of the README.

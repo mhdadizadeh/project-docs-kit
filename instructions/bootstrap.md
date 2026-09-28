@@ -21,9 +21,7 @@ Either way, once here, follow the same sequence below.
 2. Fetch this kit's instructions at that pinned version (clone or read directly) — do not assume an older reading of the instructions from earlier in the session still matches; if the pinned version changed, re-read.
 3. Read [README.md](../README.md) to understand what this kit is and is not.
 4. Read `project-knowledge/current.md` — the consolidated current state of the project.
-5. Read `project-knowledge/agents/current.md` — who owns which task right now, and whether the task you are about to touch already has an owner.
-6. If `agents/current.md` points at a recent handoff, read that handoff file under `project-knowledge/agents/handoffs/`.
-7. Follow [instructions/logging-protocol.md](logging-protocol.md) and [instructions/agent-coordination.md](agent-coordination.md) during the session.
+5. Follow [instructions/logging-protocol.md](logging-protocol.md) during the session.
 
 ## First run (no `project-knowledge/` yet)
 

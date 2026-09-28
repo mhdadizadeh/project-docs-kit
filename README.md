@@ -2,12 +2,11 @@
 
 For a practical, human-facing walkthrough (add it to a project, use it day to day, check for and apply updates), see [USAGE.md](USAGE.md) — written in Persian for this team. This README is the technical reference; `instructions/*.md` are what an AI agent reads and follows.
 
-A small, replaceable documentation-and-coordination layer for individual projects that are built with AI coding assistants (Claude Code, Codex, etc.) and that feed into a shared, central body of documentation.
+A small, replaceable documentation layer for individual projects that are built with AI coding assistants (Claude Code, Codex, etc.) and that feed into a shared, central body of documentation.
 
 This is not a software project template. It defines only:
 
 - how a single project records its own knowledge and decisions,
-- how multiple agents (or people) working the same project stay coordinated across sessions,
 - how a project surfaces findings worth promoting into the organization's central documentation.
 
 It intentionally does not define source folders, build tooling, or coding conventions — those belong to the project itself.
@@ -29,9 +28,6 @@ project-knowledge/
   kit-reference.md        # which kit repository and version this project follows
   current.md              # consolidated current state: goal, status, facts, promotion candidates
   events/                 # append-only, timestamped: what happened and why
-  agents/
-    current.md            # who owns which task right now
-    handoffs/              # append-only handoff notes between sessions/agents
 ```
 
 `project-knowledge/` is local to the project and is never overwritten by an update to this kit.
@@ -50,7 +46,7 @@ The snippet itself never changes as the kit's protocol evolves — it only point
 
 This repository is the single, authoritative copy of the protocol. It is never copied, forked, or vendored into a consumer project. A project that duplicated it would drift from it the moment either side changed — ten projects would mean ten silently diverging copies of "the protocol." Instead, a consumer project keeps only:
 
-1. its own `project-knowledge/` (its data — goal, facts, events, agent coordination), tracked in its own git repository, and
+1. its own `project-knowledge/` (its data — goal, facts, events), tracked in its own git repository, and
 2. one small pointer file recording which version of this kit it follows.
 
 An agent working in the project reads the pointer, fetches this kit's instructions from the pinned version (clone, fetch, or however the environment reaches this repo), follows them, and writes only into `project-knowledge/`. Nothing from `instructions/` or `templates/` is ever committed into the consumer project.
@@ -58,7 +54,7 @@ An agent working in the project reads the pointer, fetches this kit's instructio
 ## Install
 
 ```bash
-mkdir -p project-knowledge/events project-knowledge/agents/handoffs
+mkdir -p project-knowledge/events
 ```
 
 Create `project-knowledge/kit-reference.md`:
@@ -67,12 +63,12 @@ Create `project-knowledge/kit-reference.md`:
 # Project Docs Kit reference
 
 Kit repository: https://github.com/mhdadizadeh/project-docs-kit
-Pinned version: 2026.09.28.3   # see this kit's OS_VERSION at that commit
+Pinned version: 2026.09.28.4   # see this kit's OS_VERSION at that commit
 Last checked: <date>            # last time an update check ran, applied or not
 Last updated: <date>            # last time the pinned version actually changed
 ```
 
-Then create `project-knowledge/current.md` and `project-knowledge/agents/current.md` from this kit's `templates/project-knowledge/` — either by fetching those two template files at the pinned version, or by hand, matching the structure `instructions/logging-protocol.md` and `instructions/agent-coordination.md` define.
+Then create `project-knowledge/current.md` from this kit's `templates/project-knowledge/current.md` — either by fetching that template at the pinned version, or by hand, matching the structure `instructions/logging-protocol.md` defines.
 
 Add the contents of `templates/AGENTS.snippet.md` to the project's `AGENTS.md` (create the file if the project has none; append as its own section if one already exists for other purposes — never overwrite existing content).
 
@@ -84,7 +80,6 @@ Agent entrypoint at the start of any session: whichever tool the project uses ei
 
 - [instructions/bootstrap.md](instructions/bootstrap.md) — what an agent reads before starting work in a project
 - [instructions/logging-protocol.md](instructions/logging-protocol.md) — how to record events, current state, and facts with evidence
-- [instructions/agent-coordination.md](instructions/agent-coordination.md) — task ownership and handoffs across sessions/agents
 - [instructions/promotion-protocol.md](instructions/promotion-protocol.md) — how project findings reach the central documentation
 - [instructions/update-protocol.md](instructions/update-protocol.md) — how a project checks for and applies a newer kit version
 - [instructions/commands.md](instructions/commands.md) — canonical install / apply / update commands for giving to an agent directly, as plain text
@@ -94,6 +89,6 @@ Agent entrypoint at the start of any session: whichever tool the project uses ei
 
 Current kit version: see [OS_VERSION](OS_VERSION). Every version bump is explained in [CHANGELOG.md](CHANGELOG.md) — what changed and why, not just a number.
 
-Because the kit is never vendored, updating touches exactly `project-knowledge/kit-reference.md` in the consumer project (the pinned version and the update timestamp), committed as an ordinary change. `project-knowledge/current.md`, `events/`, and `agents/` are never touched by a kit update.
+Because the kit is never vendored, updating touches exactly `project-knowledge/kit-reference.md` in the consumer project (the pinned version and the update timestamp), committed as an ordinary change. `project-knowledge/current.md` and `events/` are never touched by a kit update.
 
 An update is never automatic. From inside any project, ask an agent to check for or apply a kit update (any clear phrasing works) and it follows [instructions/update-protocol.md](instructions/update-protocol.md): fetch the current `OS_VERSION` and `CHANGELOG.md` from this repository, show what changed since the pinned version, and apply it only on explicit confirmation.

@@ -27,4 +27,4 @@ An agent may proactively note that a check has not run in a long time (see `Last
 
 ## What this does not cover
 
-This protocol updates only which version of the kit's instructions a project follows. It never touches `project-knowledge/current.md`, `events/`, or `agents/` — those are the project's own data and are never part of a kit update.
+This protocol updates only which version of the kit's instructions a project follows. It never touches `project-knowledge/current.md` or `events/` — those are the project's own data and are never part of a kit update.
