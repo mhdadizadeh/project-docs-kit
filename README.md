@@ -38,25 +38,36 @@ project-knowledge/
 
 `project-knowledge/` is local to the project and is never overwritten by an update to this kit.
 
+## This kit is static; projects only read it
+
+This repository is the single, authoritative copy of the protocol. It is never copied, forked, or vendored into a consumer project. A project that duplicated it would drift from it the moment either side changed — ten projects would mean ten silently diverging copies of "the protocol." Instead, a consumer project keeps only:
+
+1. its own `project-knowledge/` (its data — goal, facts, events, agent coordination), tracked in its own git repository, and
+2. one small pointer file recording which version of this kit it follows.
+
+An agent working in the project reads the pointer, fetches this kit's instructions from the pinned version (clone, fetch, or however the environment reaches this repo), follows them, and writes only into `project-knowledge/`. Nothing from `instructions/` or `templates/` is ever committed into the consumer project.
+
 ## Install
 
-Every project has its own git repository, and this documentation structure becomes part of that repository — not a separate, detached thing. So the kit is vendored in as plain files, not left as a nested git clone:
-
 ```bash
-git clone --depth 1 <this-repo-url> .project-docs-kit
-rm -rf .project-docs-kit/.git   # flatten it: plain files, not a nested repo — otherwise
-                                 # the parent project's `git add` silently skips its contents
 mkdir -p project-knowledge/events project-knowledge/agents/handoffs
-cp .project-docs-kit/templates/project-knowledge/current.md project-knowledge/current.md
-cp .project-docs-kit/templates/project-knowledge/agents/current.md project-knowledge/agents/current.md
-
-git add .project-docs-kit project-knowledge
-git commit -m "Install project-docs-kit <version>"
 ```
 
-After this, both `.project-docs-kit/` and `project-knowledge/` are ordinary tracked files in the project's own repository. The project's own git history records when the kit was installed and every later change to its documentation — exactly like any other part of the project.
+Create `project-knowledge/kit-reference.md`:
 
-Agent entrypoint after installation: [instructions/bootstrap.md](instructions/bootstrap.md)
+```markdown
+# Project Docs Kit reference
+
+Kit repository: <this-repo-url>
+Pinned version: 2026.09.28.1   # see this kit's OS_VERSION at that commit
+Last synced: <date>
+```
+
+Then create `project-knowledge/current.md` and `project-knowledge/agents/current.md` from this kit's `templates/project-knowledge/` — either by fetching those two template files at the pinned version, or by hand, matching the structure `instructions/logging-protocol.md` and `instructions/agent-coordination.md` define.
+
+Commit `project-knowledge/` (including `kit-reference.md`) into the project's own repository, the same as any other project file.
+
+Agent entrypoint at the start of any session: [instructions/bootstrap.md](instructions/bootstrap.md) — an agent reads `project-knowledge/kit-reference.md` first to know which version of this kit to fetch and follow.
 
 ## Documents
 
@@ -67,17 +78,15 @@ Agent entrypoint after installation: [instructions/bootstrap.md](instructions/bo
 
 ## Version
 
-Current kit version: see [OS_VERSION](OS_VERSION). Update model is replacement-based, same as the shared OS this kit was distilled from:
+Current kit version: see [OS_VERSION](OS_VERSION). Because the kit is never vendored, an update touches exactly one line in the consumer project:
 
-```bash
-rm -rf .project-docs-kit
-git clone --depth 1 <this-repo-url> .project-docs-kit
-rm -rf .project-docs-kit/.git
-git add .project-docs-kit
-git commit -m "Update project-docs-kit to <new version>"
+```markdown
+Pinned version: <new version>
 ```
 
-`project-knowledge/` is never touched by an update. Because the kit is committed into the project's own repository, the update itself is an ordinary commit — the project's git log is the record of when and how its documentation process changed, same as any other change to the project.
+in `project-knowledge/kit-reference.md`, committed as an ordinary change to the project. `project-knowledge/current.md`, `events/`, and `agents/` are never touched by a kit update — only the protocol version the project follows changes. The next session's agent reads the new pinned version and follows whatever `instructions/` says at that version.
+
+An update should be a deliberate, reviewed decision by the project owner, not automatic — the same "explicit confirmation before applying" rule the source repo (engineering-os) had for its own updates still holds here, even though the two-stage per-request confirmation protocol does not.
 
 ## Provenance
 
