@@ -1,6 +1,6 @@
 ## Project knowledge protocol
 
-This project follows `project-docs-kit` for project knowledge and promotion to central documentation.
+This project follows `project-docs-kit` for project knowledge and for sending it to the central documentation.
 
 Before doing anything else in this project:
 

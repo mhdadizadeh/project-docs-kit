@@ -2,6 +2,14 @@
 
 Every entry names what changed and why. This is what an update check shows a project owner before they approve pulling in a new pinned version — an update is a reviewed decision, never a blind version bump.
 
+## 2026.09.28.5 — replace promotion with whole-document sending
+
+- Removed `instructions/promotion-protocol.md` and the "Promotion candidates" table entirely (from `templates/project-knowledge/current.md` and the required-sections list in `instructions/logging-protocol.md`). A project no longer pre-curates which findings are "worth" the center's attention before anything leaves the project.
+- Added `instructions/send-protocol.md` and a 4th canonical command (`instructions/commands.md`): sending now means the whole of `project-knowledge/current.md` goes to the central documentation, every time, with the central side entirely responsible for deciding what's new and how (or whether) it enters the aggregated docs.
+- Two ways to send, both valid and producing the same result: an agent with access to the central repository sends it directly, or a person copies the file by hand. `kit-reference.md` gained two fields — `Central docs repository` and `Last sent` — so a project can name its destination and record when it last sent.
+- Reasoning: the old model asked each project to gate-keep its own findings with an evidence table before anything reached the center, duplicating judgment that the center is better placed to make once it can see the whole aggregated documentation and every project's send history. This also removes a real bridge gap the old model had: nothing previously told an agent the central repository's address or how to actually get a candidate there.
+- Updated README.md, USAGE.md §4, and `templates/AGENTS.snippet.md`'s wording accordingly.
+
 ## 2026.09.28.4 — drop multi-agent task coordination
 
 - Removed `instructions/agent-coordination.md`, `project-knowledge/agents/` (current.md + handoffs/) from the expected structure and templates, and every reference to task claiming / handoff notes across README.md, USAGE.md, instructions/bootstrap.md, instructions/update-protocol.md, instructions/commands.md, and templates/AGENTS.snippet.md.

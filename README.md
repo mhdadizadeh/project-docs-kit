@@ -16,17 +16,17 @@ It intentionally does not define source folders, build tooling, or coding conven
 Every project installing this kit is assumed to sit under one shared, central documentation system (for this team: the "Domain Expert" project documentation). This kit does not replace that central system. It is the local layer that:
 
 1. lets a project record its own knowledge without waiting for a central review, and
-2. produces a small, explicit set of **promotion candidates** — findings, decisions, or tool evaluations that the project owner believes are worth the central documentation's attention.
+2. sends the whole of `project-knowledge/current.md` to that central system on request.
 
-Promotion into the central docs is never automatic. See [instructions/promotion-protocol.md](instructions/promotion-protocol.md).
+There is no local curation step and no evidence-gated candidate table — the whole document goes, every time, and the central documentation's own review process decides how (or whether) any of it enters the aggregated documentation. Sending is never automatic. See [instructions/send-protocol.md](instructions/send-protocol.md).
 
 ## Structure this kit expects in a consumer project
 
 ```
 AGENTS.md                # (or a section within it) points to project-knowledge/kit-reference.md
 project-knowledge/
-  kit-reference.md        # which kit repository and version this project follows
-  current.md              # consolidated current state: goal, status, facts, promotion candidates
+  kit-reference.md        # which kit repository and version this project follows, and the central docs repository
+  current.md              # consolidated current state: goal, status, facts, tools, open questions
   events/                 # append-only, timestamped: what happened and why
 ```
 
@@ -63,9 +63,12 @@ Create `project-knowledge/kit-reference.md`:
 # Project Docs Kit reference
 
 Kit repository: https://github.com/mhdadizadeh/project-docs-kit
-Pinned version: 2026.09.28.4   # see this kit's OS_VERSION at that commit
+Pinned version: 2026.09.28.5   # see this kit's OS_VERSION at that commit
 Last checked: <date>            # last time an update check ran, applied or not
 Last updated: <date>            # last time the pinned version actually changed
+
+Central docs repository: <url, or "not set">   # where this project's knowledge is sent; see instructions/send-protocol.md
+Last sent: <date, or "never">
 ```
 
 Then create `project-knowledge/current.md` from this kit's `templates/project-knowledge/current.md` — either by fetching that template at the pinned version, or by hand, matching the structure `instructions/logging-protocol.md` defines.
@@ -80,7 +83,7 @@ Agent entrypoint at the start of any session: whichever tool the project uses ei
 
 - [instructions/bootstrap.md](instructions/bootstrap.md) — what an agent reads before starting work in a project
 - [instructions/logging-protocol.md](instructions/logging-protocol.md) — how to record events, current state, and facts with evidence
-- [instructions/promotion-protocol.md](instructions/promotion-protocol.md) — how project findings reach the central documentation
+- [instructions/send-protocol.md](instructions/send-protocol.md) — how the whole of a project's current knowledge reaches the central documentation
 - [instructions/update-protocol.md](instructions/update-protocol.md) — how a project checks for and applies a newer kit version
 - [instructions/commands.md](instructions/commands.md) — canonical install / apply / update commands for giving to an agent directly, as plain text
 - [templates/AGENTS.snippet.md](templates/AGENTS.snippet.md) — the section to add to a project's `AGENTS.md` so AGENTS.md-aware tools bootstrap this kit automatically

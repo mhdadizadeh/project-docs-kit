@@ -40,8 +40,7 @@ Required sections:
 - **Facts and assumptions** — a table. Every row has: the claim, its evidence, its status (`confirmed` / `hypothesis` / `rejected`), and the date. A claim with no evidence is a hypothesis, not a fact, and must be labeled as one — this table is what keeps the project's agents from treating a guess as settled knowledge.
 - **Tools and approaches in use** — what is used, why it was chosen, what alternatives were considered and rejected (even briefly). This is what lets someone later ask "is this still the right tool" without redoing the original research.
 - **Open questions** — unresolved items, one line each.
-- **Promotion candidates** — see [promotion-protocol.md](promotion-protocol.md). Do not put central-documentation material anywhere else; this is the one place a promotion review will look.
-- **Change history** — one line per update to this file, each referencing the event that caused it.
+- **Change history** — one line per update to this file, each referencing the event that caused it. Also where a send to the central documentation is recorded (see [send-protocol.md](send-protocol.md)) — a line noting the date and that the whole file was sent.
 
 ## Rule for updating current state
 

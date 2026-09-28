@@ -26,12 +26,6 @@ Last updated: <date>
 
 - <one line each>
 
-## Promotion candidates
-
-| Claim | Why it matters beyond this project | Evidence | Source event | Status |
-| --- | --- | --- | --- | --- |
-| | | | | pending |
-
 ## Change history
 
 - <date>: <what changed and why> — reference: events/<file>.md

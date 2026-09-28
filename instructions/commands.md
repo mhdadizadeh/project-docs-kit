@@ -4,13 +4,14 @@ Status: Active
 
 Last updated: 2026-09-28
 
-Defines three canonical commands a project owner can give an agent, in any project, in either English or Persian. An agent should recognize the intent regardless of exact wording and map it to the matching protocol — do not require the user to phrase it exactly as shown below.
+Defines four canonical commands a project owner can give an agent, in any project, in either English or Persian. An agent should recognize the intent regardless of exact wording and map it to the matching protocol — do not require the user to phrase it exactly as shown below.
 
 | # | Intent | Example phrasing (English) | Example phrasing (Persian) | Protocol to run |
 | --- | --- | --- | --- | --- |
 | 1 | Install the kit into this project | "Install project-docs-kit from `https://github.com/mhdadizadeh/project-docs-kit` into this project" | "کیت مستندسازی را از `https://github.com/mhdadizadeh/project-docs-kit` روی این پروژه نصب کن" | README.md § Install |
 | 2 | Start/continue this session following the kit | "Continue this project following project-docs-kit" / "Bootstrap from project-docs-kit" | "طبق project-docs-kit روی این پروژه ادامه بده" / "کیت مستندسازی را روی این پروژه اعمال کن" | instructions/bootstrap.md |
 | 3 | Check for and apply a kit update | "Check project-docs-kit for an update" / "Update project-docs-kit, apply if there's a new version" | "ببین کیت مستندسازی آپدیت دارد یا نه" / "کیت را آپدیت کن" | instructions/update-protocol.md |
+| 4 | Send this project's current knowledge to the central docs | "Send this project's docs to the central documentation" | "این پروژه رو به مستندات مرکزی بفرست" / "داکیومنت این پروژه رو آپدیت کن توی مستندات مرکزی" | instructions/send-protocol.md |
 
 ## Command 1 — Install
 
@@ -29,3 +30,7 @@ This is the normal per-session startup, not a special action — see instruction
 ## Command 3 — Check / apply update
 
 See instructions/update-protocol.md. Never skip straight to applying — always show what changed (from CHANGELOG.md) and wait for explicit confirmation, even when the user's phrasing sounded like "just update it."
+
+## Command 4 — Send to central docs
+
+See instructions/send-protocol.md. Requires `Central docs repository` to already be set in `project-knowledge/kit-reference.md` — if it is not, ask for it first (or confirm the owner will copy manually) rather than guessing a destination. Sends the whole of `project-knowledge/current.md`, never a curated subset; there is nothing to pick or approve locally — that judgment happens on the central side.
