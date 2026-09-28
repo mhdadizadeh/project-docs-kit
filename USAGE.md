@@ -10,7 +10,7 @@
 
 | کار | جمله‌ای که به عامل می‌دهید |
 | --- | --- |
-| نصب کیت روی یک پروژه تازه | «کیت مستندسازی را از `<آدرس مخزن>` روی این پروژه نصب کن» |
+| نصب کیت روی یک پروژه تازه | «کیت مستندسازی را از `https://github.com/mhdadizadeh/project-docs-kit` روی این پروژه نصب کن» |
 | شروع/ادامه کار طبق کیت در یک session | «طبق project-docs-kit روی این پروژه ادامه بده» |
 | بررسی/اعمال آپدیت | «ببین کیت مستندسازی آپدیت دارد یا نه» |
 
@@ -29,8 +29,8 @@ mkdir -p project-knowledge/events project-knowledge/agents/handoffs
 ```markdown
 # Project Docs Kit reference
 
-Kit repository: <آدرس این مخزن روی گیت>
-Pinned version: 2026.09.28.1
+Kit repository: https://github.com/mhdadizadeh/project-docs-kit
+Pinned version: 2026.09.28.3
 Last checked: 2026-09-28
 Last updated: 2026-09-28
 ```
@@ -48,7 +48,7 @@ Last updated: 2026-09-28
 
 ```bash
 git add project-knowledge AGENTS.md
-git commit -m "Install project-docs-kit v2026.09.28.1"
+git commit -m "Install project-docs-kit v2026.09.28.3"
 ```
 
 از این به بعد، `project-knowledge/` و `AGENTS.md` بخشی از تاریخچه گیت همان پروژه‌اند.

@@ -21,12 +21,6 @@ Every project installing this kit is assumed to sit under one shared, central do
 
 Promotion into the central docs is never automatic. See [instructions/promotion-protocol.md](instructions/promotion-protocol.md).
 
-## What this kit deliberately does not do
-
-- It does not require a two-stage confirm-before-acting protocol on every request. Agents ask when a request is genuinely ambiguous or a decision is expensive to undo; otherwise they proceed and say what they did.
-- It does not mandate a documentation language. Write in whichever language the project team actually works in. (This team works in Persian; nothing here requires English.)
-- It does not require the whole knowledge base to be re-read on every turn. It requires reading the **current state**, not the full history, before starting work (see below).
-
 ## Structure this kit expects in a consumer project
 
 ```
@@ -72,8 +66,8 @@ Create `project-knowledge/kit-reference.md`:
 ```markdown
 # Project Docs Kit reference
 
-Kit repository: <this-repo-url>
-Pinned version: 2026.09.28.1   # see this kit's OS_VERSION at that commit
+Kit repository: https://github.com/mhdadizadeh/project-docs-kit
+Pinned version: 2026.09.28.3   # see this kit's OS_VERSION at that commit
 Last checked: <date>            # last time an update check ran, applied or not
 Last updated: <date>            # last time the pinned version actually changed
 ```
@@ -103,7 +97,3 @@ Current kit version: see [OS_VERSION](OS_VERSION). Every version bump is explain
 Because the kit is never vendored, updating touches exactly `project-knowledge/kit-reference.md` in the consumer project (the pinned version and the update timestamp), committed as an ordinary change. `project-knowledge/current.md`, `events/`, and `agents/` are never touched by a kit update.
 
 An update is never automatic. From inside any project, ask an agent to check for or apply a kit update (any clear phrasing works) and it follows [instructions/update-protocol.md](instructions/update-protocol.md): fetch the current `OS_VERSION` and `CHANGELOG.md` from this repository, show what changed since the pinned version, and apply it only on explicit confirmation.
-
-## Provenance
-
-This kit started as a stripped-down variant of [mhdadizadeh/engineering-os](https://github.com/mhdadizadeh/engineering-os), keeping its event-log + current-state model and its multi-agent handoff structure, and dropping its mandatory two-stage confirmation protocol and mandatory-English rule as too heavy for day-to-day engineering work. It adds a promotion layer that the source repo did not have.

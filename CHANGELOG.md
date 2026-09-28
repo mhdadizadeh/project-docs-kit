@@ -2,6 +2,11 @@
 
 Every entry names what changed and why. This is what an update check shows a project owner before they approve pulling in a new pinned version — an update is a reviewed decision, never a blind version bump.
 
+## 2026.09.28.3 — trim README, fill placeholder URLs
+
+- Removed the "What this kit deliberately does not do" and "Provenance" sections from README.md. Their content (dropping the two-stage confirm protocol and mandatory-English rule, and the origin in `mhdadizadeh/engineering-os`) is historical context, not something an agent or a project owner needs on every read of the README.
+- Replaced all remaining `<repo-url>` / `<آدرس مخزن>` / `<this-repo-url>` placeholders across README.md, USAGE.md, and instructions/commands.md with the real, published repository URL (`https://github.com/mhdadizadeh/project-docs-kit`), and corrected stale `2026.09.28.1` example version strings to match the current version.
+
 ## 2026.09.28.2 — align with AGENTS.md
 
 - Added `templates/AGENTS.snippet.md`: a short, stable section a project adds to its own `AGENTS.md` (the open, widely-adopted convention that Codex, Cursor, GitHub Copilot, and other current tools already read automatically at session start). This makes this kit's bootstrap automatic on any tool that reads `AGENTS.md` on its own, with the explicit commands remaining as the fallback for tools that don't.

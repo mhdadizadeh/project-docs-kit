@@ -8,7 +8,7 @@ Defines three canonical commands a project owner can give an agent, in any proje
 
 | # | Intent | Example phrasing (English) | Example phrasing (Persian) | Protocol to run |
 | --- | --- | --- | --- | --- |
-| 1 | Install the kit into this project | "Install project-docs-kit from `<repo-url>` into this project" | "کیت مستندسازی را از `<آدرس مخزن>` روی این پروژه نصب کن" | README.md § Install |
+| 1 | Install the kit into this project | "Install project-docs-kit from `https://github.com/mhdadizadeh/project-docs-kit` into this project" | "کیت مستندسازی را از `https://github.com/mhdadizadeh/project-docs-kit` روی این پروژه نصب کن" | README.md § Install |
 | 2 | Start/continue this session following the kit | "Continue this project following project-docs-kit" / "Bootstrap from project-docs-kit" | "طبق project-docs-kit روی این پروژه ادامه بده" / "کیت مستندسازی را روی این پروژه اعمال کن" | instructions/bootstrap.md |
 | 3 | Check for and apply a kit update | "Check project-docs-kit for an update" / "Update project-docs-kit, apply if there's a new version" | "ببین کیت مستندسازی آپدیت دارد یا نه" / "کیت را آپدیت کن" | instructions/update-protocol.md |
 
