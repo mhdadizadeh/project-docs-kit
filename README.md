@@ -60,7 +60,8 @@ Create `project-knowledge/kit-reference.md`:
 
 Kit repository: <this-repo-url>
 Pinned version: 2026.09.28.1   # see this kit's OS_VERSION at that commit
-Last synced: <date>
+Last checked: <date>            # last time an update check ran, applied or not
+Last updated: <date>            # last time the pinned version actually changed
 ```
 
 Then create `project-knowledge/current.md` and `project-knowledge/agents/current.md` from this kit's `templates/project-knowledge/` — either by fetching those two template files at the pinned version, or by hand, matching the structure `instructions/logging-protocol.md` and `instructions/agent-coordination.md` define.
@@ -75,18 +76,15 @@ Agent entrypoint at the start of any session: [instructions/bootstrap.md](instru
 - [instructions/logging-protocol.md](instructions/logging-protocol.md) — how to record events, current state, and facts with evidence
 - [instructions/agent-coordination.md](instructions/agent-coordination.md) — task ownership and handoffs across sessions/agents
 - [instructions/promotion-protocol.md](instructions/promotion-protocol.md) — how project findings reach the central documentation
+- [instructions/update-protocol.md](instructions/update-protocol.md) — how a project checks for and applies a newer kit version
 
-## Version
+## Version and updates
 
-Current kit version: see [OS_VERSION](OS_VERSION). Because the kit is never vendored, an update touches exactly one line in the consumer project:
+Current kit version: see [OS_VERSION](OS_VERSION). Every version bump is explained in [CHANGELOG.md](CHANGELOG.md) — what changed and why, not just a number.
 
-```markdown
-Pinned version: <new version>
-```
+Because the kit is never vendored, updating touches exactly `project-knowledge/kit-reference.md` in the consumer project (the pinned version and the update timestamp), committed as an ordinary change. `project-knowledge/current.md`, `events/`, and `agents/` are never touched by a kit update.
 
-in `project-knowledge/kit-reference.md`, committed as an ordinary change to the project. `project-knowledge/current.md`, `events/`, and `agents/` are never touched by a kit update — only the protocol version the project follows changes. The next session's agent reads the new pinned version and follows whatever `instructions/` says at that version.
-
-An update should be a deliberate, reviewed decision by the project owner, not automatic — the same "explicit confirmation before applying" rule the source repo (engineering-os) had for its own updates still holds here, even though the two-stage per-request confirmation protocol does not.
+An update is never automatic. From inside any project, ask an agent to check for or apply a kit update (any clear phrasing works) and it follows [instructions/update-protocol.md](instructions/update-protocol.md): fetch the current `OS_VERSION` and `CHANGELOG.md` from this repository, show what changed since the pinned version, and apply it only on explicit confirmation.
 
 ## Provenance
 

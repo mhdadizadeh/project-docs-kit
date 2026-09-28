@@ -32,6 +32,8 @@ Treat `project-knowledge/current.md` as the authoritative working state of the p
 
 This is not a request-confirmation gate. Read the current state, then do the work. Ask only when a request is genuinely ambiguous or a decision would be expensive to undo.
 
-## Version check
+## Updates
 
-Read [OS_VERSION](../OS_VERSION) at the start of a session. If it differs from the version last loaded, treat this as a fresh kit load and re-read the instruction files before relying on them.
+Bootstrapping (step 1-2 above) reads the project's *pinned* version — it does not check whether a newer version exists. Checking for and applying a newer version only happens when the user explicitly asks for it, following [instructions/update-protocol.md](update-protocol.md). Do not run that protocol as part of ordinary bootstrap, and do not apply an update without the user's confirmation.
+
+If `kit-reference.md`'s `Last checked` date is old (weeks, not days), it is reasonable to mention that once and offer to check — but proceed with the session on the pinned version either way unless the user asks to check now.
