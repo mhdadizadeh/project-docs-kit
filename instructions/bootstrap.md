@@ -15,6 +15,10 @@ This is the entrypoint an AI coding assistant reads before starting work in a pr
 5. If none of the above exists yet (first run in this project), read recent commits and any existing project documentation to reconstruct the current state, then create `project-knowledge/current.md` and `project-knowledge/agents/current.md` from the templates in `templates/`.
 6. Follow [instructions/logging-protocol.md](logging-protocol.md) and [instructions/agent-coordination.md](agent-coordination.md) during the session.
 
+## Where this lives
+
+This kit and `project-knowledge/` are vendored into the project's own git repository as plain files (see README's Install section) — not a nested git clone, not a separate detached store. Both are tracked, diffed, and reviewed the same way as any other part of the project.
+
 ## Operating rule
 
 Treat `project-knowledge/current.md` as the authoritative working state of the project — not chat history, not memory, not a previous session's assumptions. If something in the current session contradicts it, that is worth a knowledge event (see logging-protocol.md), not a silent overwrite.

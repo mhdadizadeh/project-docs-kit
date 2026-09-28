@@ -40,12 +40,21 @@ project-knowledge/
 
 ## Install
 
+Every project has its own git repository, and this documentation structure becomes part of that repository — not a separate, detached thing. So the kit is vendored in as plain files, not left as a nested git clone:
+
 ```bash
-git clone <this-repo-url> .project-docs-kit
+git clone --depth 1 <this-repo-url> .project-docs-kit
+rm -rf .project-docs-kit/.git   # flatten it: plain files, not a nested repo — otherwise
+                                 # the parent project's `git add` silently skips its contents
 mkdir -p project-knowledge/events project-knowledge/agents/handoffs
 cp .project-docs-kit/templates/project-knowledge/current.md project-knowledge/current.md
 cp .project-docs-kit/templates/project-knowledge/agents/current.md project-knowledge/agents/current.md
+
+git add .project-docs-kit project-knowledge
+git commit -m "Install project-docs-kit <version>"
 ```
+
+After this, both `.project-docs-kit/` and `project-knowledge/` are ordinary tracked files in the project's own repository. The project's own git history records when the kit was installed and every later change to its documentation — exactly like any other part of the project.
 
 Agent entrypoint after installation: [instructions/bootstrap.md](instructions/bootstrap.md)
 
@@ -58,7 +67,17 @@ Agent entrypoint after installation: [instructions/bootstrap.md](instructions/bo
 
 ## Version
 
-Current kit version: see [OS_VERSION](OS_VERSION). Update model is replacement-based, same as the shared OS this kit was distilled from: fetch a newer version, replace the kit files, never touch `project-knowledge/`.
+Current kit version: see [OS_VERSION](OS_VERSION). Update model is replacement-based, same as the shared OS this kit was distilled from:
+
+```bash
+rm -rf .project-docs-kit
+git clone --depth 1 <this-repo-url> .project-docs-kit
+rm -rf .project-docs-kit/.git
+git add .project-docs-kit
+git commit -m "Update project-docs-kit to <new version>"
+```
+
+`project-knowledge/` is never touched by an update. Because the kit is committed into the project's own repository, the update itself is an ordinary commit — the project's git log is the record of when and how its documentation process changed, same as any other change to the project.
 
 ## Provenance
 
